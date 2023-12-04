@@ -26,3 +26,12 @@ def lambda_handler(event, context):
     print("EBS vols to delete:")
     for vol in unused_volumes:
         print(vol)
+
+    return {
+        "statusCode": 200,
+        "isBase64Encoded": False,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {"unused_volumes": unused_volumes}
+    }
